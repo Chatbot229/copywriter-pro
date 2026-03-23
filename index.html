@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Lévi Tcheveko – Copywriter | Pages de vente qui convertissent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #fefaf5;
+            color: #1e2a2f;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* HEADER */
+        .header {
+            background: #1e3f34;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .nav a {
+            color: #e9b35f;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #e9b35f;
+            color: #1e2a2f;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: 0.1s;
+        }
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: #1e3f34;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: #e9b35f;
+        }
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .portfolio-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .portfolio-card-content {
+            padding: 25px;
+        }
+        .portfolio-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #1e3f34;
+        }
+        .portfolio-card p {
+            color: #5d6e66;
+            margin-bottom: 20px;
+        }
+        .btn-small {
+            background: #e9b35f;
+            color: #1e2a2f;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        /* Testimonials */
+        .testimonials {
+            background: #fdf8f0;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .client-name {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #1e3f34;
+        }
+        .before-after {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .before-after img {
+            width: 45%;
+            border-radius: 10px;
+        }
+        /* Contact */
+        .contact {
+            background: #1e3f34;
+            color: white;
+            text-align: center;
+        }
+        .contact h2 {
+            color: #e9b35f;
+        }
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        .contact-btn {
+            background: #e9b35f;
+            color: #1e2a2f;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.1s;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: #fefaf5;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 30px;
+            position: relative;
+        }
+        .close-modal {
+            position: sticky;
+            top: 10px;
+            float: right;
+            background: #e9b35f;
+            border: none;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .modal-body {
+            clear: both;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6e7e75;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .header .container { flex-direction: column; gap: 15px; }
+        }
+        /* styles for sales pages inside modal */
+        .sales-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .sales-hero {
+            background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .sales-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .sales-content {
+            padding: 40px;
+        }
+        .sales-benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .sales-benefit-card {
+            background: #f9f4ea;
+            padding: 25px;
+            border-radius: 25px;
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        .testimonial-block {
+            background: #fdf8f0;
+            padding: 30px;
+            border-radius: 30px;
+            margin: 30px 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e6d9cd;
+            padding: 20px 0;
+        }
+        .offer-box {
+            background: #1e3f34;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 40px;
+            margin: 40px 0;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .old-price {
+            text-decoration: line-through;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">✍️ Lévi Tcheveko</div>
+        <div class="nav">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#testimonials">Clients</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>J'écris des pages de vente qui font sortir la carte bleue</h1>
+        <p>3 ans d’expérience, des millions de FCFA générés pour mes clients. Transformez votre message en machine à vendre.</p>
+        <a href="#contact" class="btn">Discuter de votre projet</a>
+    </div>
+</section>
+
+<section id="portfolio" class="section container">
+    <h2 class="section-title">Mes pages de vente</h2>
+    <p style="margin-bottom: 30px;">Cliquez sur une carte pour découvrir la page complète.</p>
+    <div class="portfolio-grid" id="projectList"></div>
+</section>
+
+<section id="testimonials" class="testimonials section">
+    <div class="container">
+        <h2 class="section-title">Ils ont fait appel à moi</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sandra">
+                <p>« Avant Lévi, ma page de vente ne convertissait pas. Après ses corrections, mes ventes ont doublé en 15 jours. »</p>
+                <div class="client-name">— Sandra K., fondatrice de Beauté Nature</div>
+                <div class="before-after">
+                    <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Avant">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Après">
+                </div>
+                <div style="font-size:0.8rem;">+120% de conversions</div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marc">
+                <p>« Un professionnel rare. Il a su capturer l’essence de ma marque. Résultat : +70% de chiffre d’affaires. »</p>
+                <div class="client-name">— Marc D., fondateur FitPro</div>
+                <div class="before-after">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Avant">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Après">
+                </div>
+                <div style="font-size:0.8rem;">+40% de clics sur le CTA</div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aïssa">
+                <p>« J’ai enfin une page qui me ressemble et qui vend. Lévi a su trouver les mots justes. »</p>
+                <div class="client-name">— Aïssa B., coach</div>
+                <div class="before-after">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Avant">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Après">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact section">
+    <div class="container">
+        <h2 class="section-title" style="color: #e9b35f;">Parlons de votre projet</h2>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Un message, une idée ? Je vous réponds sous 24h.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/2290192865710?text=Bonjour%20L%C3%A9vi%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20services%20de%20copywriting.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" class="contact-btn">📱 WhatsApp</a>
+            <a href="mailto:levitcheveko@gmail.com?subject=Demande%20de%20prestation%20copywriting&body=Bonjour%20L%C3%A9vi%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20prestations." class="contact-btn">✉️ Email</a>
+        </div>
+        <p>📞 Téléphone : +229 01 92 86 57 10</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2025 Lévi Tcheveko – Copywriter. Tous droits réservés. Créateur de pages de vente qui convertissent.</p>
+</footer>
+
+<!-- MODAL -->
+<div id="salesModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn">&times;</button>
+        <div id="modalBody" class="modal-body"></div>
+    </div>
+</div>
+
+<script>
+    // ==================== PAGES DE VENTE COMPLÈTES (très longues) ====================
+    const salesPages = {
+        kinominceur: `
+            <div class="sales-page">
+                <div class="sales-hero" style="background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);">
+                    <h1>Vous avez déjà essayé plusieurs méthodes… sans réussir à tenir sur la durée ?</h1>
+                    <p style="font-size:1.2rem;">Kino Minceur vous aide à rendre votre routine minceur plus soutenable, plus régulière et moins frustrante au quotidien.</p>
+                </div>
+                <div class="sales-content">
+                    <h2>Vous avez peut-être l'impression d'avoir tout essayé…</h2>
+                    <p>Il y a ces matins où vous évitez presque le miroir. Pas seulement à cause d'un chiffre sur la balance. Mais à cause de ce décalage entre ce que vous ressentez à l'intérieur… et l'image que vous renvoie votre reflet.</p>
+                    <p>Ces vêtements que vous aimez, mais que vous n'osez plus porter comme avant. Ce jean que vous gardez “pour plus tard”. Cette robe que vous adoriez… mais qui dort au fond du placard.</p>
+                    <ul style="margin:20px 0;">
+                        <li>Cette sensation de lourdeur après certains repas</li>
+                        <li>Ces envies de grignotage qui reviennent sans cesse</li>
+                        <li>Ce coup de fatigue dans l'après-midi</li>
+                        <li>Ce manque d'élan pour bouger, sortir, vous sentir bien</li>
+                    </ul>
+                    <p><strong>Soyons honnêtes :</strong> le vrai problème n’est pas seulement le poids. C’est ce que cela finit par toucher : votre confiance, votre énergie, votre plaisir au quotidien.</p>
+
+                    <h2>Pourquoi les régimes classiques finissent par vous décevoir</h2>
+                    <div style="background:#f5ede2; padding:25px; border-radius:25px; margin:30px 0;">
+                        <h3>1. Ils demandent une volonté surhumaine</h3>
+                        <p>Se priver, compter chaque calorie, éliminer tout ce qu’on aime… C’est tenable quelques jours, rarement plusieurs semaines.</p>
+                        <h3>2. Ils ignorent la vraie vie</h3>
+                        <p>Stress, fatigue, fringales, imprévus… Une méthode trop stricte finit souvent par casser au premier dérapage.</p>
+                        <h3>3. Ils misent sur l’effort, pas sur la régularité</h3>
+                        <p>Perdre vite pendant une semaine n’est pas le vrai défi. Le vrai défi, c’est de tenir assez longtemps pour que les résultats deviennent visibles.</p>
+                        <p style="font-weight:600;">👉 Résultat : espoir → privation → craquage → culpabilité → abandon</p>
+                    </div>
+
+                    <h2>Kino Minceur : un coup de pouce pour votre régularité</h2>
+                    <p>La plupart des gens n’échouent pas parce qu’ils ne savent pas quoi faire. Ils échouent parce qu’ils n’arrivent pas à tenir assez longtemps pour voir des résultats. Kino Minceur a été pensé pour réduire cette friction quotidienne.</p>
+                    <p>Formule en gouttes à base d’ingrédients d’origine naturelle, pour :</p>
+                    <ul><li>mieux gérer certaines envies de grignotage,</li><li>retrouver une sensation de légèreté,</li><li>rendre votre routine minceur plus soutenable sur la durée,</li><li>accompagner vos efforts au quotidien.</li></ul>
+                    <p><strong>Comment ça aide ?</strong> Pensées pour s’intégrer facilement à votre quotidien, les gouttes vous aident à rester plus constant(e) dans votre démarche et à mieux traverser les moments où les fringales ou la fatigue font généralement abandonner.</p>
+
+                    <div class="sales-benefits-grid">
+                        <div class="sales-benefit-card"><h3>💧 Routine fluide</h3><p>Quelques gouttes par jour, sans chambouler vos habitudes.</p></div>
+                        <div class="sales-benefit-card"><h3>😌 Moins de frustration</h3><p>Vous vous sentez plus serein(e) face aux tentations.</p></div>
+                        <div class="sales-benefit-card"><h3>🍃 Légèreté plus régulière</h3><p>Avec moins d’inconfort après certains repas.</p></div>
+                        <div class="sales-benefit-card"><h3>📆 Plus de constance</h3><p>Quand la routine est réaliste, on abandonne moins vite.</p></div>
+                    </div>
+
+                    <div class="testimonial-block">
+                        <p>« Pendant des années, j’ai enchaîné les régimes. Je perdais 3 kilos, j’en reprenais 4. Avec Kino Minceur, j’ai enfin trouvé un rythme que je peux suivre sans y penser. Les gouttes m’aident à mieux gérer mes fringales, et je me sens moins ballonnée. J’ai perdu 6 kg en 3 mois, mais le plus important, c’est que je ne me sens plus en guerre contre mon corps. »</p>
+                        <p><strong>— Nathalie, 42 ans</strong> (perte de 6 kg sur 3 mois)</p>
+                    </div>
+                    <div class="testimonial-block">
+                        <p>« Au début, je pensais que ça ne changerait pas grand-chose. Finalement, ce qui m’a aidé, c’est surtout le fait que j’ai réussi à rester plus régulier. Je grignote moins le soir, je me sens plus léger au quotidien, et mes vêtements sont redevenus plus confortables. »</p>
+                        <p><strong>— Marc, 35 ans</strong> (routine plus stable)</p>
+                    </div>
+
+                    <div class="faq-item"><strong>❓ Est-ce que Kino Minceur fait maigrir à lui seul ?</strong><br>Non. Il accompagne une démarche globale. Il ne remplace ni alimentation équilibrée, ni hygiène de vie, mais peut aider à rendre la démarche plus soutenable.</div>
+                    <div class="faq-item"><strong>❓ En combien de temps puis-je ressentir quelque chose ?</strong><br>Certaines personnes ressentent plus de légèreté assez rapidement, pour d’autres cela prend plus de temps. La constance est clé.</div>
+                    <div class="faq-item"><strong>❓ Y a-t-il des précautions ?</strong><br>Comme tout complément, vérifiez la composition et demandez un avis médical en cas de grossesse, allaitement, traitement ou condition particulière.</div>
+                    <div class="faq-item"><strong>❓ Combien de temps dure un flacon ?</strong><br>Environ 30 jours d’utilisation selon le rythme recommandé.</div>
+
+                    <div class="offer-box">
+                        <h2>Offre découverte – lancement</h2>
+                        <p>1 flacon de Kino Minceur (30 jours)</p>
+                        <div class="price"><span class="old-price">59 000 FCFA</span> 29 500 FCFA</div>
+                        <p>Soit moins de 1 000 FCFA par jour pour tester une routine plus fluide.</p>
+                        <div style="background:#2d5a48; border-radius:30px; padding:20px; margin:20px 0;">
+                            <p>🎁 Bonus offerts (inclus uniquement pendant l’offre de lancement)</p>
+                            <p>📘 Guide digital “Recettes Plaisir & Minceur”</p>
+                            <p>📅 Mini programme “7 Jours de Reprise en Main”</p>
+                        </div>
+                        <a href="#contact" class="btn-small" style="background:#e9b35f; color:#1e2a2f;">OUI, JE VEUX COMMENCER MA ROUTINE KINO MINCEUR AUJOURD’HUI</a>
+                        <p style="margin-top:15px;">Vous ne recevez pas seulement un produit. Vous démarrez avec une approche plus réaliste, plus soutenable et plus compatible avec votre quotidien.</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        fitpro: `
+            <div class="sales-page">
+                <div class="sales-hero" style="background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);">
+                    <h1>Vous voulez retrouver la forme sans passer 2h par jour à la salle ?</h1>
+                    <p>FitPro – le programme en ligne qui s’adapte à votre rythme, avec un coaching personnalisé.</p>
+                </div>
+                <div class="sales-content">
+                    <h2>Vous êtes fatigué(e), vous manquez de temps, mais vous voulez bouger ?</h2>
+                    <p>Vous avez essayé plusieurs fois de reprendre le sport. Vous vous êtes inscrit(e) à la salle, vous avez suivi des vidéos YouTube… mais au bout de quelques jours, vous avez abandonné. Par manque de temps, de motivation ou parce que les programmes étaient trop difficiles à suivre.</p>
+                    <p>Ce n’est pas votre faute. La plupart des méthodes fitness sont conçues pour des athlètes, pas pour des gens qui ont une vie (travail, famille, imprévus).</p>
+
+                    <h2>Pourquoi les autres programmes échouent</h2>
+                    <div style="background:#f5ede2; padding:25px; border-radius:25px; margin:30px 0;">
+                        <h3>1. Ils sont trop rigides</h3>
+                        <p>Des horaires fixes, des exercices complexes, un rythme intenable pour un débutant.</p>
+                        <h3>2. Ils ignorent votre quotidien</h3>
+                        <p>Ils ne prennent pas en compte la fatigue, le stress, les enfants à gérer…</p>
+                        <h3>3. Ils misent sur la performance, pas sur la constance</h3>
+                        <p>Le vrai défi n’est pas de faire un entraînement intense une fois, mais de créer une routine que vous pourrez suivre sur des mois.</p>
+                    </div>
+
+                    <h2>FitPro : des séances de 20 minutes, accessibles partout</h2>
+                    <p>FitPro a été conçu par des coachs qui savent ce que c’est d’avoir un emploi du temps chargé. Le programme propose :</p>
+                    <ul><li>Séances de 15 à 20 minutes, sans matériel (ou avec ce que vous avez chez vous)</li><li>3 niveaux de difficulté, progression naturelle</li><li>Vidéos en HD, accessibles sur mobile, tablette ou ordinateur</li><li>Suivi personnalisé via un coach dédié (WhatsApp)</li><li>Communauté motivante pour ne pas abandonner</li></ul>
+
+                    <div class="sales-benefits-grid">
+                        <div class="sales-benefit-card"><h3>💪 Perte de poids durable</h3><p>Résultats visibles en 4 semaines.</p></div>
+                        <div class="sales-benefit-card"><h3>⚡ Plus d'énergie</h3><p>Vous vous réveillez moins fatigué(e).</p></div>
+                        <div class="sales-benefit-card"><h3>🧘 Moins de stress</h3><p>Le sport devient un moment de plaisir, pas une corvée.</p></div>
+                        <div class="sales-benefit-card"><h3>📆 Routine stable</h3><p>Vous tenez dans la durée sans vous dégoûter.</p></div>
+                    </div>
+
+                    <div class="testimonial-block">
+                        <p>« J’ai toujours détesté aller à la salle. Avec FitPro, je m’entraîne chez moi, 20 minutes par jour. J’ai perdu 8 kg en 3 mois sans me sentir épuisée. Le coach est réactif et la communauté m’a vraiment aidée à ne pas lâcher. »</p>
+                        <p><strong>— Christelle, 34 ans</strong> (perte de 8 kg, regain d’énergie)</p>
+                    </div>
+                    <div class="testimonial-block">
+                        <p>« Je suis commercial, je voyage beaucoup. FitPro me permet de m’entraîner dans ma chambre d’hôtel. En 2 mois, j’ai gagné en tonus et je dors mieux. Le meilleur investissement santé de l’année. »</p>
+                        <p><strong>— Kevin, 29 ans</strong> (ventre plus plat, meilleur sommeil)</p>
+                    </div>
+
+                    <div class="faq-item"><strong>❓ Est-ce que je peux suivre FitPro si je n’ai jamais fait de sport ?</strong><br>Oui. Le niveau débutant est conçu pour les personnes sédentaires. Les mouvements sont expliqués pas à pas.</div>
+                    <div class="faq-item"><strong>❓ Combien de temps par jour ?</strong><br>15 à 20 minutes, 5 fois par semaine. Vous pouvez adapter selon votre disponibilité.</div>
+                    <div class="faq-item"><strong>❓ Ai-je besoin d’équipement ?</strong><br>Non, le programme utilise le poids du corps. Quelques accessoires optionnels (tapis, élastique) sont listés.</div>
+                    <div class="faq-item"><strong>❓ Y a-t-il un remboursement ?</strong><br>Oui, garantie satisfait ou remboursé pendant 30 jours.</div>
+
+                    <div class="offer-box">
+                        <h2>Offre de lancement</h2>
+                        <p>Accès illimité à vie</p>
+                        <div class="price"><span class="old-price">120 000 FCFA</span> 59 000 FCFA</div>
+                        <p>+ 2 semaines d’essai remboursées</p>
+                        <div style="background:#2d5a48; border-radius:30px; padding:20px; margin:20px 0;">
+                            <p>🎁 Bonus : Guide nutrition “Manger sain sans frustration” + Accès à la communauté privée</p>
+                        </div>
+                        <a href="#contact" class="btn-small" style="background:#e9b35f;">OUI, JE COMMENCE MA ROUTINE FITPRO</a>
+                    </div>
+                </div>
+            </div>
+        `,
+        ecolumiere: `
+            <div class="sales-page">
+                <div class="sales-hero" style="background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);">
+                    <h1>Vous avez du mal à vous endormir ? Vous vous réveillez fatigué ?</h1>
+                    <p>ÉcoLumière – la lampe connectée qui améliore votre sommeil et votre humeur, en respectant votre rythme biologique.</p>
+                </div>
+                <div class="sales-content">
+                    <h2>Vous passez des nuits agitées, vous traînez une fatigue chronique…</h2>
+                    <p>Votre réveil est brutal, vous avez besoin de deux cafés pour tenir la journée. Le soir, votre cerveau ne veut pas s’éteindre. Vous regardez votre téléphone jusqu’à tard, et le cycle recommence.</p>
+                    <p>Ce n’est pas un hasard. La lumière artificielle de nos écrans et de nos lampes classiques perturbe notre horloge biologique. Résultat : un sommeil de mauvaise qualité, une baisse d’énergie et même des troubles de l’humeur.</p>
+
+                    <h2>La solution : une lampe qui reproduit la lumière du jour</h2>
+                    <p>ÉcoLumière est une lampe connectée qui émet une lumière chaude le soir (favorisant la mélatonine) et une lumière froide le matin (simulant le lever du soleil). Elle s’adapte automatiquement à votre cycle ou se programme en 1 minute via une application.</p>
+                    <ul><li>Réveil en douceur : la lumière s’intensifie progressivement pour vous réveiller naturellement, sans stress.</li>
+                    <li>Atténuation progressive le soir : la lumière diminue pour préparer votre cerveau au sommeil.</li>
+                    <li>Contrôle vocal et appli mobile (compatible avec Alexa et Google Home).</li>
+                    <li>Design épuré, s’intègre dans toutes les pièces.</li></ul>
+
+                    <div class="sales-benefits-grid">
+                        <div class="sales-benefit-card"><h3>😴 Meilleur sommeil</h3><p>Endormissement plus rapide, nuits plus profondes.</p></div>
+                        <div class="sales-benefit-card"><h3>☀️ Énergie au réveil</h3><p>Fini les réveils brutaux et la somnolence matinale.</p></div>
+                        <div class="sales-benefit-card"><h3>🧠 Concentration boostée</h3><p>Une lumière adaptée améliore la productivité.</p></div>
+                        <div class="sales-benefit-card"><h3>🌿 Écologique</h3><p>LED basse consommation, durée de vie de 10 ans.</p></div>
+                    </div>
+
+                    <div class="testimonial-block">
+                        <p>« Je souffrais d’insomnie depuis des années. Depuis que j’utilise ÉcoLumière, je m’endors en 20 minutes et je me lève sans fatigue. Un vrai changement de vie ! »</p>
+                        <p><strong>— Sophie, 41 ans</strong> (sommeil retrouvé)</p>
+                    </div>
+                    <div class="testimonial-block">
+                        <p>« J’ai acheté cette lampe pour mon bureau. La lumière dynamique m’aide à rester concentré l’après-midi sans coup de barre. Je recommande à tous mes collègues. »</p>
+                        <p><strong>— Thierry, 35 ans</strong> (productivité +30%)</p>
+                    </div>
+
+                    <div class="faq-item"><strong>❓ Est-ce que la lampe est efficace pour les enfants ?</strong><br>Oui, de nombreux parents l’utilisent pour aider leurs enfants à s’endormir plus sereinement.</div>
+                    <div class="faq-item"><strong>❓ Quelle est la puissance lumineuse ?</strong><br>Équivalente à une lampe de bureau standard, mais avec une température de couleur réglable.</div>
+                    <div class="faq-item"><strong>❓ Est-ce compliqué à installer ?</strong><br>Il suffit de brancher la lampe et de télécharger l’application. L’appairage se fait en 30 secondes.</div>
+                    <div class="faq-item"><strong>❓ Garantie ?</strong><br>2 ans, remboursement 60 jours si vous n’êtes pas satisfait.</div>
+
+                    <div class="offer-box">
+                        <h2>Offre spéciale précommande</h2>
+                        <div class="price"><span class="old-price">45 000 FCFA</span> 29 900 FCFA</div>
+                        <p>Livraison offerte</p>
+                        <div style="background:#2d5a48; border-radius:30px; padding:20px; margin:20px 0;">
+                            <p>🎁 Bonus : Programme “7 jours pour réguler votre sommeil” (PDF) offert</p>
+                        </div>
+                        <a href="#contact" class="btn-small" style="background:#e9b35f;">JE PROFITE DE L’OFFRE</a>
+                    </div>
+                </div>
+            </div>
+        `,
+        masterclassCopy: `
+            <div class="sales-page">
+                <div class="sales-hero" style="background: linear-gradient(135deg, #2c5a4a 0%, #1e3f34 100%);">
+                    <h1>Masterclass Copywriting – Écrivez comme un pro et vendez sans être vendeur</h1>
+                    <p>Formation 100% pratique pour créer vos pages de vente, emails et publicités qui convertissent.</p>
+                </div>
+                <div class="sales-content">
+                    <h2>Vous avez un produit ou un service, mais vous galérez à rédiger des textes qui vendent ?</h2>
+                    <p>Vous perdez des clients parce que votre message ne les touche pas. Vous passez des heures à écrire, mais les résultats ne sont pas au rendez-vous. Vous savez que le copywriting peut tout changer, mais vous ne savez pas par où commencer.</p>
+                    <p>Cette masterclass a été créée pour vous. En 8 modules, vous allez apprendre les techniques que j’utilise moi-même pour générer des millions de FCFA pour mes clients.</p>
+
+                    <h2>Au programme :</h2>
+                    <ul><li>Module 1 : Les 5 structures de vente qui marchent (AIDA, PAS, etc.)</li>
+                    <li>Module 2 : Comment capter l’attention en 3 secondes (titres et hooks)</li>
+                    <li>Module 3 : Créer une crédibilité inattaquable (preuves sociales, témoignages)</li>
+                    <li>Module 4 : L’art de l’agitation – faire ressentir la douleur sans être lourd</li>
+                    <li>Module 5 : Rédiger des pages de vente longues qui convertissent</li>
+                    <li>Module 6 : Emails marketing – séquences d’accueil, de vente, de relance</li>
+                    <li>Module 7 : Publicités Facebook / Google Ads – textes qui cliquent</li>
+                    <li>Module 8 : Mise en pratique – atelier de rédaction avec correction</li></ul>
+
+                    <div class="sales-benefits-grid">
+                        <div class="sales-benefit-card"><h3>✍️ Méthode éprouvée</h3><p>Basée sur mon expérience terrain et l’analyse de centaines de pages.</p></div>
+                        <div class="sales-benefit-card"><h3>📊 Templates prêts à l’emploi</h3><p>Gagnez un temps fou avec mes 30 templates d’emails et 10 structures de pages.</p></div>
+                        <div class="sales-benefit-card"><h3>🎯 Coaching en direct</h3><p>2 sessions de questions-réponses en visio pour avancer sur vos projets.</p></div>
+                        <div class="sales-benefit-card"><h3>🤝 Communauté privée</h3><p>Échangez avec d’autres copywriters et entrepreneurs.</p></div>
+                    </div>
+
+                    <div class="testimonial-block">
+                        <p>« J’avais déjà lu des livres sur le copywriting, mais la masterclass de Lévi m’a permis de passer à l’action. En 3 semaines, j’ai réécrit ma page de vente et mes ventes ont augmenté de 60%. Un must pour tout entrepreneur ! »</p>
+                        <p><strong>— Élodie, créatrice de formation</strong></p>
+                    </div>
+                    <div class="testimonial-block">
+                        <p>« Lévi est un pédagogue hors pair. Il rend le copywriting simple et immédiatement applicable. Ses templates m’ont sauvé des heures de travail. Je recommande à 200%. »</p>
+                        <p><strong>— Abdoul, e-commerçant</strong></p>
+                    </div>
+
+                    <div class="faq-item"><strong>❓ La formation est-elle accessible à un débutant complet ?</strong><br>Oui, les modules commencent par les bases et vont jusqu’aux techniques avancées.</div>
+                    <div class="faq-item"><strong>❓ Quelle est la durée de la formation ?</strong><br>Accès à vie, vous progressez à votre rythme. Les vidéos représentent environ 12h de contenu.</div>
+                    <div class="faq-item"><strong>❓ Y a-t-il des exercices ?</strong><br>Oui, des ateliers pratiques avec correction personnalisée pour les premiers inscrits.</div>
+                    <div class="faq-item"><strong>❓ Satisfait ou remboursé ?</strong><br>Oui, garantie 30 jours.</div>
+
+                    <div class="offer-box">
+                        <h2>Tarif exceptionnel pour les 50 premiers</h2>
+                        <div class="price"><span class="old-price">150 000 FCFA</span> 75 000 FCFA</div>
+                        <div style="background:#2d5a48; border-radius:30px; padding:20px; margin:20px 0;">
+                            <p>🎁 Bonus : 50 templates d’emails + Guide “Les 20 erreurs de copy à éviter” + Accès à vie à la communauté</p>
+                        </div>
+                        <a href="#contact" class="btn-small" style="background:#e9b35f;">JE M’INSCRIS À LA MASTERCLASS</a>
+                    </div>
+                </div>
+            </div>
+        `,
+        beautyboost: `
+            <div class="sales-page">
+                <div class="sales-hero" style="background: linear-gradient(135deg, #b76e4e 0%, #8a563c 100%);">
+                    <h1>BeautyBoost – Le sérum qui révèle votre éclat naturel</h1>
+                    <p>Résultats visibles en 14 jours, formulation clean et vegan.</p>
+                </div>
+                <div class="sales-content">
+                    <h2>Votre peau mérite mieux qu’une crème standard.</h2>
+                    <p>Vous avez essayé des dizaines de produits, mais votre peau reste terne, marquée par les imperfections ou les signes de fatigue. Vous dépensez une fortune en cosmétiques sans jamais obtenir le résultat promis.</p>
+                    <p>Le problème ? La plupart des crèmes contiennent des ingrédients agressifs, des silicones ou des parabènes qui étouffent la peau. BeautyBoost est différent.</p>
+
+                    <h2>Pourquoi BeautyBoost est différent</h2>
+                    <ul><li>Acide hyaluronique + vitamine C : hydratation profonde et éclat immédiat.</li>
+                    <li>Sans parabène, sans silicone, sans parfum artificiel.</li>
+                    <li>Testé dermatologiquement, adapté à tous les types de peaux (y compris sensibles).</li>
+                    <li>Fabriqué en France, ingrédients d’origine naturelle.</li></ul>
+
+                    <div class="sales-benefits-grid">
+                        <div class="sales-benefit-card"><h3>✨ Éclat visible</h3><p>La peau retrouve sa luminosité en 2 semaines.</p></div>
+                        <div class="sales-benefit-card"><h3>💧 Hydratation intense</h3><p>Effet repulpant immédiat.</p></div>
+                        <div class="sales-benefit-card"><h3>🛡️ Protection antioxydante</h3><p>Lutte contre le vieillissement prématuré.</p></div>
+                        <div class="sales-benefit-card"><h3>🌱 Formulation clean</h3><p>98% d’ingrédients d’origine naturelle, vegan.</p></div>
+                    </div>
+
+                    <div class="testimonial-block">
+                        <p>« J’ai testé BeautyBoost après avoir vu les avis. En 15 jours, mes taches brunes ont diminué et ma peau est plus uniforme. Je reçois des compliments tous les jours ! »</p>
+                        <p><strong>— Aminata, 38 ans</strong> (peau plus lumineuse)</p>
+                    </div>
+                    <div class="testimonial-block">
+                        <p>« Je suis très méfiante avec les cosmétiques à cause de ma peau réactive. Ce sérum n’a rien provoqué, au contraire, mes rougeurs ont disparu. Un produit incroyable. »</p>
+                        <p><strong>— Laura, 27 ans</strong> (peau apaisée)</p>
+                    </div>
+
+                    <div class="faq-item"><strong>❓ Combien de temps dure un flacon ?</strong><br>Environ 1 mois d’utilisation quotidienne (matin et soir).</div>
+                    <div class="faq-item"><strong>❓ Peut-on l’utiliser enceinte ?</strong><br>Oui, la formule est sans ingrédient contre-indiqué, mais nous recommandons de consulter son médecin.</div>
+                    <div class="faq-item"><strong>❓ Y a-t-il des effets indésirables ?</strong><br>La formule est hypoallergénique. En cas de sensibilité, faites un test sur une petite zone.</div>
+                    <div class="faq-item"><strong>❓ Livraison ?</strong><br>Livraison offerte en Afrique de l’Ouest pour toute commande.</div>
+
+                    <div class="offer-box">
+                        <h2>Offre de lancement</h2>
+                        <div class="price"><span class="old-price">25 000 FCFA</span> 17 500 FCFA</div>
+                        <p>+ 1 masque hydratant offert (valeur 7 000 FCFA)</p>
+                        <div style="background:#2d5a48; border-radius:30px; padding:20px; margin:20px 0;">
+                            <p>🎁 Bonus : Guide “Routine peau éclatante” (PDF) offert</p>
+                        </div>
+                        <a href="#contact" class="btn-small" style="background:#e9b35f;">J’ACHÈTE MAINTENANT</a>
+                    </div>
+                </div>
+            </div>
+        `
+    };
+
+    // Projets affichés sur la page d'accueil
+    const projects = [
+        { title: "Kino Minceur – Complément minceur", description: "Page de vente longue pour produit naturel. Structure AIDA/PAS complète, FAQ, témoignages.", img: "https://images.unsplash.com/photo-1616671276441-2f2c3b0b4c0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", key: "kinominceur" },
+        { title: "FitPro – Programme fitness", description: "Vente de coaching en ligne. Mise en avant du gain de temps et des résultats.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", key: "fitpro" },
+        { title: "ÉcoLumière – Lampe connectée", description: "Page e‑commerce avec arguments santé et confort, témoignages.", img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", key: "ecolumiere" },
+        { title: "Masterclass Copywriting", description: "Formation en ligne. Mise en avant de la transformation professionnelle.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", key: "masterclassCopy" },
+        { title: "BeautyBoost – Sérum visage", description: "Cosmétique clean. Page axée sur les résultats visuels et la confiance.", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", key: "beautyboost" }
+    ];
+
+    // Génération des cartes
+    const grid = document.getElementById('projectList');
+    projects.forEach(proj => {
+        const card = document.createElement('div');
+        card.className = 'portfolio-card';
+        card.innerHTML = `
+            <img src="${proj.img}" alt="${proj.title}">
+            <div class="portfolio-card-content">
+                <h3>${proj.title}</h3>
+                <p>${proj.description}</p>
+                <button class="btn-small" data-key="${proj.key}">Voir la page de vente</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Modale
+    const modal = document.getElementById('salesModal');
+    const modalBody = document.getElementById('modalBody');
+    const closeModal = document.getElementById('closeModalBtn');
+
+    function openModal(contentKey) {
+        if (salesPages[contentKey]) {
+            modalBody.innerHTML = salesPages[contentKey];
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Faire fonctionner les liens internes "#contact" dans les modales
+            const internalLinks = modalBody.querySelectorAll('a[href="#contact"]');
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+    }
+
+    document.addEventListener('click', (e) => {
+        if (e.target.classList && e.target.classList.contains('btn-small') && e.target.dataset.key) {
+            openModal(e.target.dataset.key);
+        }
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>
+</body>
+</html>
